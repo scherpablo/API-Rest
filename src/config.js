@@ -6,8 +6,10 @@ config();
 
 export const PORT = process.env.PORT || 3000;
 
-export const MYSQLHOST = process.env.MYSQLHOST || 'localhost';
-export const MYSQLDATABASE = process.env.MYSQLDATABASE || 'estudio_scherpa';
-export const MYSQLPASSWORD = process.env.MYSQLPASSWORD || '';
+export const MYSQLHOST = process.env.MYSQLHOST || "localhost";
+export const MYSQLDATABASE = process.env.MYSQLDATABASE || "estudio_scherpa";
+export const MYSQLPASSWORD = process.env.MYSQLPASSWORD || "";
 export const MYSQLPORT = process.env.MYSQLPORT || 3306;
-export const MYSQLUSER = process.env.MYSQLUSER || 'root';
+export const MYSQLUSER = process.env.MYSQLUSER || "root"
+
+console.log(MYSQLHOST);
