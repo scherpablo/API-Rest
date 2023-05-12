@@ -7,7 +7,7 @@ const ROUTER = Router();
 
 //Creamnos rutas tipo GET para obtener todos los clientes
 ROUTER.get('/clientes', getClientes);
-//Creamos rutas tipo GET para obtener un cliente
+//Creamos rutas tipo GET para obtener un cliente pos su id
 ROUTER.get('/clientes/:id', getCliente);
 //Creamos rutas tipo POST para crear clientes
 ROUTER.post('/clientes', createtClientes);

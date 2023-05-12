@@ -21,15 +21,15 @@ export const getCliente = async (req, res) => {
     }
 };
 export const createtClientes = async (req, res) => {
-    const { nombre, apellido, dni_cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip } = req.body;
+    const { nombre, apellido, cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip } = req.body;
     try {        
-        const [ROWS] = await POOL.query('INSERT INTO clientes(nombre, apellido, dni_cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip) VALUES (?,?,?,?,?,?,?,?,?,?)', [nombre, apellido, dni_cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip])
+        const [ROWS] = await POOL.query('INSERT INTO clientes(nombre, apellido, cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip) VALUES (?,?,?,?,?,?,?,?,?,?)', [nombre, apellido, cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip])
 
         res.send({ 
             id: ROWS.insertId,
             nombre,
             apellido,
-            dni_cuit,
+            cuit,
             fecha_de_nacimiento,
             domicilio,
             localidad,
@@ -45,9 +45,9 @@ export const createtClientes = async (req, res) => {
 export const updateClientes = async (req, res) => {
     //Actualizamos un cliente por su id
     const { id } = req.params;
-    const { nombre, apellido, dni_cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip } = req.body;
+    const { nombre, apellido, cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip } = req.body;
     try {
-        const [RESUTL] = await POOL.query('UPDATE clientes SET nombre = IFNULL(?, nombre), apellido = IFNULL(?, apellido), dni_cuit = IFNULL(?, dni_cuit), fecha_de_nacimiento = IFNULL(?, fecha_de_nacimiento), domicilio = IFNULL(?, domicilio), localidad = IFNULL(?, localidad), codigo_postal = IFNULL(?, codigo_postal), telefono = IFNULL(?, telefono), clave_anses = IFNULL(?, clave_anses), clave_afip  = IFNULL(?, clave_afip) WHERE id = ?', [nombre, apellido, dni_cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip, id]);
+        const [RESUTL] = await POOL.query('UPDATE clientes SET nombre = IFNULL(?, nombre), apellido = IFNULL(?, apellido), cuit = IFNULL(?, cuit), fecha_de_nacimiento = IFNULL(?, fecha_de_nacimiento), domicilio = IFNULL(?, domicilio), localidad = IFNULL(?, localidad), codigo_postal = IFNULL(?, codigo_postal), telefono = IFNULL(?, telefono), clave_anses = IFNULL(?, clave_anses), clave_afip  = IFNULL(?, clave_afip) WHERE id = ?', [nombre, apellido, cuit, fecha_de_nacimiento, domicilio, localidad, codigo_postal, telefono, clave_anses, clave_afip, id]);
         
         if (RESUTL.affectedRows === 0) {return res.status(404).json({messagge: "Cliente no encontrado"})}
 

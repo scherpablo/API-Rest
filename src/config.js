@@ -12,4 +12,3 @@ export const MYSQLPASSWORD = process.env.MYSQLPASSWORD || "";
 export const MYSQLPORT = process.env.MYSQLPORT || 3306;
 export const MYSQLUSER = process.env.MYSQLUSER || "root"
 
-console.log(MYSQLHOST);
